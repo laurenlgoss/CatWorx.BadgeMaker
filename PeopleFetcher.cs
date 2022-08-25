@@ -12,6 +12,7 @@ namespace CatWorx.BadgeMaker
         public static List<Employee> GetEmployees()
         {
             List<Employee> employees = new List<Employee>();
+            
             while (true)
             {
                 Console.WriteLine("Enter first name (leavy empty to exit): ");

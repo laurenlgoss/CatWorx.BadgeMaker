@@ -9,8 +9,18 @@ namespace CatWorx.BadgeMaker
         // Entry point for application
         async static Task Main(string[] args)
         {
-            // List<Employee> employees = PeopleFetcher.GetEmployees();
-            List<Employee> employees = await PeopleFetcher.GetFromAPI();
+            Console.WriteLine("Do you want to get data from an employee API (yes or no)?");
+            bool getFromAPI = Console.ReadLine().ToLower() == "yes" ? true : false;
+
+            List<Employee> employees = new List<Employee>();
+            if (getFromAPI)
+            {
+                employees = await PeopleFetcher.GetFromAPI();
+            } else 
+            {
+                employees = PeopleFetcher.GetEmployees();
+            }
+
             Util.PrintEmployees(employees);
             Util.MakeCSV(employees);
             await Util.MakeBadges(employees);
